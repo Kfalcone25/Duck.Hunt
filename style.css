@@ -20,7 +20,7 @@ body {
 
 #canvas1 {
     position: relative;
-    border: 5px solid black;
+    /* border: 5px solid black; */
     width: 50%;
     height: auto;
     margin: 3%;

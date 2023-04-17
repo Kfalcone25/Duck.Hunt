@@ -84,20 +84,18 @@ window.addEventListener("click", function (e) {
 });
 // Check if the click was on a duck
 
-function missedShots() {
-  if (getMousePos !== ducks[i] ) {
-    misses++
-  }
-  // if(misses++) {
-  //   ctx.
-  // }
-}
+// function missedShots() {
+//   if (getMousePos !== ducks[i] ) {
+//     misses++
+//   }
+//   // if(misses++) {
+//   //   ctx.
+//   // }
+// }
 
 function winCondition() {
-  if (score >= 15) {
-    alert("YOU WIN, CONGRATULATIONS!");
-    document.location.reload();
-    clearInterval(animationId);
+  if (score >= 10) {
+    gameOver()
   }
 }
 
@@ -106,7 +104,7 @@ function animate() {
   ctx.drawImage(backgroundImg, 0, 0, 1100, 1000);
   // if(frameCount % 90 === 0) {
   //     ducks.push(duck)
-
+  winCondition();
   for (let i = 0; i < ducks.length; i++) {
     ducks[i].draw();
     ducks[i].update();
@@ -124,12 +122,18 @@ function animate() {
   ctx.font = "50px serif";
   ctx.fillText(`${score}`, canvas.width - 150, 85);
 
-  winCondition();
+  
 }
 
 function gameOver() {
   gameOn = false;
+  ctx.clearRect(0, 0, canvas.width, canvas.height)
   clearInterval(animationId);
+  ctx.fillStyle = 'white'
+  ctx.fillText('Game Over!', 400, 482)
+  if (clearRect === true) {
+    clearTimeout(score)
+  }
   // clearcanvas and draw gameOver
 }
 
